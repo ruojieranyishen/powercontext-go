@@ -256,6 +256,7 @@ test -f "$2"
 	want := []string{"build", "scan|-mode=binary bin/powercontext-vulncheck"}
 	if !slices.Equal(got, want) {
 		t.Fatalf("dependency-security calls:\n%s\nwant:\n%s", strings.Join(got, "\n"), strings.Join(want, "\n"))
+	}
 }
 
 func TestCleanRemovesOnlyKnownLocalOutputs(t *testing.T) {
@@ -287,7 +288,7 @@ func TestCleanRemovesOnlyKnownLocalOutputs(t *testing.T) {
 	}
 	if _, err := os.Stat(filepath.Join(root, "keep", "sentinel")); err != nil {
 		t.Fatalf("make clean removed unrelated sentinel: %v", err)
-}
+	}
 }
 
 func TestModuleIntegrityRunsEveryOwnedModule(t *testing.T) {
